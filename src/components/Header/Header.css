@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  padding: 7px 20px;
+  background-color: var(--dark-blue);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+.header__logoImage {
+  width: 50px;
+  height: auto;
+}
+
+.header__search {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 24px;
+  width: 500px;
+}
+
+.header__search > input {
+  border: none;
+  outline: 0;
+  width: 90%;
+}
+
+.header__menu {
+  color: white;
+}
