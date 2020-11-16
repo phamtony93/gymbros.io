@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@material-ui/core";
-import { googleLogin } from "../../firebase";
+import { googleLogin, twitterLogin } from "../../firebase";
 import logo from "../../assets/images/logo.png";
 import FacebookLogo from "../../assets/images/facebook-logo.jpg";
 import GoogleLogo from "../../assets/images/google-logo.png";
@@ -42,7 +42,12 @@ function Login() {
               className="login__alternativeLogos"
               onClick={googleLogin}
             />
-            <img src={TwitterLogo} alt="" className="login__alternativeLogos" />
+            <img
+              src={TwitterLogo}
+              alt=""
+              className="login__alternativeLogos"
+              onClick={twitterLogin}
+            />
           </div>
         </div>
       </div>
