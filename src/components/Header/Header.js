@@ -10,9 +10,12 @@ import { Link } from "react-router-dom";
 // import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 // import Logout from "@material-ui/icons/ExitToApp";
 // import Login from "@material-ui/icons/PersonAdd";
+import { useStateProvider } from "../../StateProvider";
+import { logout } from "../../firebase";
 
 function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [{ user }, dispatch] = useStateProvider();
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -22,6 +25,11 @@ function Header() {
     setAnchorEl(event.target);
   };
 
+  const logoutAndRedirect = () => {
+    handleClose();
+    logout();
+  };
+
   return (
     <div className="header">
       <div className="header__logo">
@@ -29,7 +37,7 @@ function Header() {
         <h3>GymBros</h3>
       </div>
       <div className="header__search">
-        <SearchIcon />
+        <SearchIcon style={{ width: "40px" }} />
         <input type="text"></input>
       </div>
       <div className="header__menu">
@@ -50,10 +58,17 @@ function Header() {
             {/* <HelpIcon /> */}
             <p>Help</p>
           </MenuItem>
-          <MenuItem onClick={handleClose} component={Link} to="/login">
-            {/* <Login /> */}
-            Login
-          </MenuItem>
+          {user ? (
+            <MenuItem onClick={logoutAndRedirect} component={Link} to="/">
+              {/* <Login /> */}
+              Logout
+            </MenuItem>
+          ) : (
+            <MenuItem onClick={handleClose} component={Link} to="/login">
+              {/* <Login /> */}
+              Login
+            </MenuItem>
+          )}
         </Menu>
       </div>
     </div>
