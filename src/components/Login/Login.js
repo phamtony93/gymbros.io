@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@material-ui/core";
-import { googleLogin, twitterLogin } from "../../firebase";
+import { googleLogin, twitterLogin, facebookLogin } from "../../firebase";
 import logo from "../../assets/images/logo.png";
 import FacebookLogo from "../../assets/images/facebook-logo.jpg";
 import GoogleLogo from "../../assets/images/google-logo.png";
@@ -34,7 +34,7 @@ function Login() {
               src={FacebookLogo}
               alt=""
               className="login__alternativeLogos"
-              // onClick={changeTest}
+              onClick={facebookLogin}
             />
             <img
               src={GoogleLogo}

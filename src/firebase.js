@@ -38,6 +38,23 @@ export const twitterLogin = () => {
     });
 };
 
+const facebookProvider = new firebase.auth.FacebookAuthProvider();
+export const facebookLogin = () => {
+  auth
+    .signInWithPopup(facebookProvider)
+    .then((result) => {
+      const token = result.credential.accessToken;
+      const user = result.user;
+      console.log({ token, user });
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email = error.email;
+      console.log({ errorCode, errorMessage, email });
+    });
+};
+
 export const logout = () => {
   auth
     .signOut()

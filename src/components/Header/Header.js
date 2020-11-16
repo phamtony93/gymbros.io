@@ -48,7 +48,9 @@ function Header() {
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={handleClose}
-          anchorOrigin={{ vertical: "bottom" }}
+          getContentAnchorEl={null}
+          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+          transformOrigin={{ vertical: "top", horizontal: "center" }}
         >
           <MenuItem onClick={handleClose} component={Link} to="/profile">
             {/* <AccountCircleIcon /> */}
