@@ -5,15 +5,24 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { StateProvider } from "./StateProvider";
 import reducer, { initialState } from "./reducer";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: "http://localhost:5000/gymbros-66f34/us-central1/graphql",
+  cache: new InMemoryCache(),
+});
+
+console.log("here");
 
 ReactDOM.render(
   // <React.StrictMode>
   //   <App />
   // </React.StrictMode>,
-
-  <StateProvider reducer={reducer} initialState={initialState}>
-    <App />
-  </StateProvider>,
+  <ApolloProvider client={client}>
+    <StateProvider reducer={reducer} initialState={initialState}>
+      <App />
+    </StateProvider>
+  </ApolloProvider>,
   document.getElementById("root")
 );
 

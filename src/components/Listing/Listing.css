@@ -1,0 +1,10 @@
+.home {
+  display: flex;
+}
+.home__feed {
+  width: 50%;
+}
+
+.home__map {
+  width: 50%;
+}

@@ -8,14 +8,24 @@ const { ApolloServer, gql } = require("apollo-server-express");
 // define typeDefs
 const typeDefs = gql`
   type Hotdog {
-    isKosher: Boolean
+    isKosher: String
     location: String
     name: String
     style: String
     website: String
   }
+  type listing {
+    address: String
+    city: String
+    hostName: String
+    gymPhotos: [String]
+    perDayPrice: Float
+    perMonthPrice: Float
+    zipcode: String
+  }
   type Query {
     hotdogs: [Hotdog]
+    listings: [listing]
   }
 `;
 
@@ -37,6 +47,22 @@ const resolvers = {
           };
         });
         console.log(items);
+        return items;
+      }
+    },
+    listings: async () => {
+      const listingsRef = db.collection("listings");
+      const snapshot = await listingsRef.get();
+      if (snapshot.empty) {
+        console.log("No matching documents");
+      } else {
+        let items = snapshot.docs.map((doc) => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            ...data,
+          };
+        });
         return items;
       }
     },
