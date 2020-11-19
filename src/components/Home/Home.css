@@ -1,9 +1,28 @@
 .home {
   display: flex;
+  padding: 10px;
 }
 
 .home__feed {
   width: 50%;
+}
+
+.home__feed > hr {
+  width: 90%;
+  margin: auto;
+  border: none;
+  height: 1px;
+  background-color: var(--blue-gray);
+}
+
+.home__feedFilters {
+  height: 20%;
+  background-color: yellow;
+}
+
+.home__feedListings {
+  padding-top: 30px;
+  height: 80%;
 }
 
 .home__map {

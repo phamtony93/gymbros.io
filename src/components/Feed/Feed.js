@@ -1,6 +1,7 @@
 import React from "react";
 import "./Feed.css";
 import { useQuery, gql } from "@apollo/client";
+import Listing from "../Listing/Listing";
 
 const LISTINGS_QUERY = gql`
   query {
@@ -17,13 +18,9 @@ function Feed() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: (</p>;
-  return data.listings.map(({ hostName, city, gymPhotos }) => (
-    <div key={hostName}>
-      <ul>
-        <li>{hostName}</li>
-        <li>{city}</li>
-        <li>{gymPhotos}</li>
-      </ul>
+  return data.listings.map(({ id, hostName, city, gymPhotos }) => (
+    <div key={id}>
+      <Listing hostName={hostName} city={city} gymPhotos={gymPhotos} />
     </div>
   ));
 }

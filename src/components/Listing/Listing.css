@@ -1,10 +1,9 @@
-.home {
+.listing {
   display: flex;
-}
-.home__feed {
-  width: 50%;
+  border: 1px solid red;
 }
 
-.home__map {
-  width: 50%;
+.listing__carouselImages {
+  width: 200px;
+  height: auto;
 }
