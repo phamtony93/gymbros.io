@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.css";
 import Feed from "../Feed/Feed";
 import Filters from "../Filter/Filter";
+import GoogleMap from "../GoogleMap/GoogleMap";
 
 function Home() {
   return (
@@ -13,7 +14,9 @@ function Home() {
           <Feed />
         </div>
       </div>
-      <div className="home__map">google map</div>
+      <div className="home__map">
+        <GoogleMap />
+      </div>
     </div>
   );
 }
