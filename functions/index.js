@@ -19,9 +19,10 @@ const typeDefs = gql`
     city: String
     hostName: String
     gymPhotos: [String]
-    perDayPrice: Float
-    perMonthPrice: Float
+    perDayPrice: Int
+    perMonthPrice: Int
     zipcode: String
+    description: String
   }
   type Query {
     hotdogs: [Hotdog]

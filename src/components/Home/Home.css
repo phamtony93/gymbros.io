@@ -1,6 +1,7 @@
 .home {
   display: flex;
   padding: 10px;
+  padding-top: 90px;
 }
 
 .home__feed {
@@ -8,11 +9,11 @@
 }
 
 .home__feed > hr {
-  width: 90%;
+  width: 95%;
   margin: auto;
   border: none;
   height: 1px;
-  background-color: var(--blue-gray);
+  background-color: lightgray;
 }
 
 .home__feedFilters {
@@ -21,7 +22,7 @@
 }
 
 .home__feedListings {
-  padding-top: 30px;
+  padding-top: 10px;
   height: 80%;
 }
 

@@ -2,7 +2,14 @@ import React from "react";
 import "./Listing.css";
 import Carousel from "react-material-ui-carousel";
 
-function Listing({ hostName, city, gymPhotos }) {
+function Listing({
+  hostName,
+  city,
+  gymPhotos,
+  perDayPrice,
+  perMonthPrice,
+  description,
+}) {
   const firstPhoto = gymPhotos[1];
   return (
     <div className="listing">
@@ -21,6 +28,9 @@ function Listing({ hostName, city, gymPhotos }) {
         <ul>
           <li>{hostName}</li>
           <li>{city}</li>
+          <li>{perDayPrice}</li>
+          <li>{perMonthPrice}</li>
+          <li>{description}</li>
         </ul>
       </div>
     </div>

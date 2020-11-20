@@ -9,6 +9,9 @@ const LISTINGS_QUERY = gql`
       hostName
       city
       gymPhotos
+      perDayPrice
+      perMonthPrice
+      description
     }
   }
 `;
@@ -18,11 +21,34 @@ function Feed() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: (</p>;
-  return data.listings.map(({ id, hostName, city, gymPhotos }) => (
-    <div key={id}>
-      <Listing hostName={hostName} city={city} gymPhotos={gymPhotos} />
+  return (
+    <div className="feed">
+      {" "}
+      {data.listings.map(
+        ({
+          id,
+          hostName,
+          city,
+          gymPhotos,
+          perDayPrice,
+          perMonthPrice,
+          description,
+        }) => (
+          <div key={id}>
+            <Listing
+              hostName={hostName}
+              city={city}
+              gymPhotos={gymPhotos}
+              perDayPrice={perDayPrice}
+              perMonthPrice={perMonthPrice}
+              description={description}
+            />
+            <hr></hr>
+          </div>
+        )
+      )}{" "}
     </div>
-  ));
+  );
 }
 
 export default Feed;
