@@ -3,8 +3,10 @@ import "./Home.css";
 import Feed from "../Feed/Feed";
 import Filters from "../Filter/Filter";
 import GoogleMap from "../GoogleMap/GoogleMap";
+import { useStateProvider } from "../../StateProvider.js";
 
 function Home() {
+  const [{ map_marker }] = useStateProvider();
   return (
     <div className="home">
       <div className="home__feed">
@@ -15,7 +17,7 @@ function Home() {
         </div>
       </div>
       <div className="home__map">
-        <GoogleMap />
+        <GoogleMap geocode={map_marker} />
       </div>
     </div>
   );

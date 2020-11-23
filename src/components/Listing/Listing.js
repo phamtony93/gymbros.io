@@ -1,6 +1,7 @@
 import React from "react";
 import "./Listing.css";
 import Carousel from "react-material-ui-carousel";
+import { useStateProvider } from "../../StateProvider";
 
 function Listing({
   hostName,
@@ -9,10 +10,18 @@ function Listing({
   perDayPrice,
   perMonthPrice,
   description,
+  geocode,
 }) {
-  const firstPhoto = gymPhotos[1];
+  const [{ map_marker }, dispatch] = useStateProvider();
+
+  const handleClick = () => {
+    dispatch({
+      type: "SET_MAP_MARKER",
+      map_marker: { lat: geocode.latitude, lng: geocode.longitude },
+    });
+  };
   return (
-    <div className="listing">
+    <div className="listing" onClick={handleClick}>
       <div className="listing__images">
         <Carousel
           autoPlay={false}
@@ -25,13 +34,18 @@ function Listing({
         </Carousel>
       </div>
       <div className="listing__info">
-        <ul>
-          <li>{hostName}</li>
-          <li>{city}</li>
-          <li>{perDayPrice}</li>
-          <li>{perMonthPrice}</li>
-          <li>{description}</li>
-        </ul>
+        <div className="listing__infoDesc">
+          <div>Host: {hostName}</div>
+          <div>City: {city}</div>
+          <div>Description: {description}</div>
+        </div>
+        <hr></hr>
+        <div className="listing__infoPrice">
+          <div>
+            $/Day: {perDayPrice}
+            $/Month: {perMonthPrice}
+          </div>
+        </div>
       </div>
     </div>
   );

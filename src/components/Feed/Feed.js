@@ -12,6 +12,10 @@ const LISTINGS_QUERY = gql`
       perDayPrice
       perMonthPrice
       description
+      geocode {
+        longitude
+        latitude
+      }
     }
   }
 `;
@@ -33,6 +37,7 @@ function Feed() {
           perDayPrice,
           perMonthPrice,
           description,
+          geocode,
         }) => (
           <div key={id}>
             <Listing
@@ -42,6 +47,7 @@ function Feed() {
               perDayPrice={perDayPrice}
               perMonthPrice={perMonthPrice}
               description={description}
+              geocode={geocode}
             />
             <hr></hr>
           </div>

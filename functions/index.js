@@ -14,6 +14,10 @@ const typeDefs = gql`
     style: String
     website: String
   }
+  type Geocode {
+    longitude: String
+    latitude: String
+  }
   type listing {
     address: String
     city: String
@@ -23,6 +27,7 @@ const typeDefs = gql`
     perMonthPrice: Int
     zipcode: String
     description: String
+    geocode: Geocode
   }
   type Query {
     hotdogs: [Hotdog]

@@ -1,11 +1,12 @@
 import React from "react";
 import "./Filter.css";
+
 function Filter() {
   return (
     <div className="filter">
-      <p>filter1</p>
-      <p>filter2</p>
-      <p>filter3</p>
+      <input type="text" placeholder="filter1"></input>
+      <input type="text" placeholder="filter2"></input>
+      <input type="text" placeholder="filter3"></input>
     </div>
   );
 }

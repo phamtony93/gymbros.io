@@ -1,6 +1,10 @@
 export const initialState = {
   authorized: false,
   user: null,
+  map_marker: {
+    lat: -1.2884,
+    lng: 36.8233,
+  },
 };
 
 const reducer = (state, action) => {
@@ -15,6 +19,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: action.user,
+      };
+    case "SET_MAP_MARKER":
+      return {
+        ...state,
+        map_marker: action.map_marker,
       };
     default:
       return state;

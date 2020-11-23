@@ -7,4 +7,27 @@
   width: 200px;
   height: auto;
   border-radius: 5%;
+  margin-right: 10px;
+}
+
+.listing__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.listing__infoDesc {
+  display: flex;
+  flex-direction: column;
+  /* margin-bottom: 20px; */
+}
+
+.listing__infoPrice {
+  /* margin-top: 10px; */
+  display: flex;
+  align-items: flex-end;
+}
+
+.listing__info > hr {
+  margin: 20px 0px;
+  width: 30px;
 }
