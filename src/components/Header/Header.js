@@ -5,7 +5,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 // import Menu from "@material-ui/core/Menu";
 import { MenuItem, Menu } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 // import HelpIcon from "@material-ui/icons/Help";
 // import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 // import Logout from "@material-ui/icons/ExitToApp";
@@ -14,6 +14,7 @@ import { useStateProvider } from "../../StateProvider";
 import { logout } from "../../firebase";
 
 function Header() {
+  let history = useHistory();
   const [anchorEl, setAnchorEl] = useState(null);
   const [{ user }, dispatch] = useStateProvider();
 
@@ -33,7 +34,12 @@ function Header() {
   return (
     <div className="header">
       <div className="header__logo">
-        <img src={logo} alt="" className="header__logoImage" />
+        <img
+          src={logo}
+          alt=""
+          className="header__logoImage"
+          onClick={() => history.push("/")}
+        />
         <h3>GymBros</h3>
       </div>
       <div className="header__search">
@@ -48,8 +54,9 @@ function Header() {
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={handleClose}
+          disableScrollLock={true}
           getContentAnchorEl={null}
-          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+          anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
           transformOrigin={{ vertical: "top", horizontal: "center" }}
         >
           <MenuItem onClick={handleClose} component={Link} to="/profile">

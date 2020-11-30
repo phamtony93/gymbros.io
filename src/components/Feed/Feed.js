@@ -6,6 +6,7 @@ import Listing from "../Listing/Listing";
 const LISTINGS_QUERY = gql`
   query {
     listings {
+      id
       hostName
       city
       gymPhotos
@@ -24,7 +25,8 @@ function Feed() {
   const { loading, error, data } = useQuery(LISTINGS_QUERY);
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: (</p>;
+  if (error) return <p>Error: Data Not Retrieved</p>;
+  console.log(data);
   return (
     <div className="feed">
       {" "}
@@ -41,6 +43,7 @@ function Feed() {
         }) => (
           <div key={id}>
             <Listing
+              id={id}
               hostName={hostName}
               city={city}
               gymPhotos={gymPhotos}

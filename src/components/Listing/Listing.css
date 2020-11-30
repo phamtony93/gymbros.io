@@ -24,7 +24,6 @@
 .listing__infoPrice {
   /* margin-top: 10px; */
   display: flex;
-  align-items: flex-end;
 }
 
 .listing__info > hr {

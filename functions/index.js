@@ -19,6 +19,7 @@ const typeDefs = gql`
     latitude: String
   }
   type listing {
+    id: String
     address: String
     city: String
     hostName: String
@@ -69,6 +70,7 @@ const resolvers = {
             ...data,
           };
         });
+        console.log(items);
         return items;
       }
     },

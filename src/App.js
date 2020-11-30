@@ -8,6 +8,7 @@ import Help from "./components/Help/Help";
 import Profile from "./components/Profile/Profile";
 import { useStateProvider } from "./StateProvider";
 import { auth } from "./firebase.js";
+import ListingPage from "./components/ListingPage/ListingPage";
 
 function App() {
   const [{ user }, dispatch] = useStateProvider();
@@ -36,6 +37,7 @@ function App() {
       <Router>
         <Header />
         <Switch>
+          <Route path="/listing/:id" component={ListingPage} />
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/help" component={Help} />

@@ -13,7 +13,7 @@ const mapStyles = {
 export class MapContainer extends Component {
   render() {
     let { lat, lng } = this.props.geocode;
-    console.log({ lat, lng });
+    // console.log({ lat, lng });
     return (
       <div className="googleMap__mapContainer">
         <Map
