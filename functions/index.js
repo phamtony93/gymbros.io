@@ -30,9 +30,15 @@ const typeDefs = gql`
     description: String
     geocode: Geocode
   }
+  type Member {
+    uid: String
+    name: String
+    role: String
+  }
   type Query {
     hotdogs: [Hotdog]
     listings: [listing]
+    members(filter: String!): [Member]
   }
 `;
 
@@ -60,6 +66,25 @@ const resolvers = {
     listings: async () => {
       const listingsRef = db.collection("listings");
       const snapshot = await listingsRef.get();
+      if (snapshot.empty) {
+        console.log("No matching documents");
+      } else {
+        let items = snapshot.docs.map((doc) => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            ...data,
+          };
+        });
+        console.log(items);
+        return items;
+      }
+    },
+    members: async (parent, args, context, info) => {
+      const memberRef = db
+        .collection("members")
+        .where("uid", "==", args.filter);
+      const snapshot = await memberRef.get();
       if (snapshot.empty) {
         console.log("No matching documents");
       } else {

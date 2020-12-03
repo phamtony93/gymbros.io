@@ -1,6 +1,7 @@
 export const initialState = {
   authorized: false,
   user: null,
+  role: "owner",
   map_marker: {
     lat: -1.2884,
     lng: 36.8233,

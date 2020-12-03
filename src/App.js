@@ -9,7 +9,28 @@ import Profile from "./components/Profile/Profile";
 import { useStateProvider } from "./StateProvider";
 import { auth } from "./firebase.js";
 import ListingPage from "./components/ListingPage/ListingPage";
+import { useQuery, gql } from "@apollo/client";
 
+const MEMBER_QUERY = gql`
+  query MemberInfoQuery($filter: String!) {
+    member(filter: $filter) {
+      role
+    }
+  }
+`;
+
+// const _getRole = async (uid) => {
+//   const { data, loading, error } = useQuery(MEMBER_QUERY, {
+//     variables: { uid: uid },
+//   });
+
+//   if (data) {
+//     return data;
+//   } else {
+//     console.log(error);
+//     return null;
+//   }
+// };
 function App() {
   const [{ user }, dispatch] = useStateProvider();
 
@@ -20,6 +41,10 @@ function App() {
           type: "SET_USER",
           user: authUser,
         });
+
+        // get and set role
+        // const role = _getRole(authUser.uid);
+        // console.log(role);
       } else {
         dispatch({
           type: "SET_USER",

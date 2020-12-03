@@ -59,10 +59,12 @@ function Header() {
           anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
           transformOrigin={{ vertical: "top", horizontal: "center" }}
         >
-          <MenuItem onClick={handleClose} component={Link} to="/profile">
-            {/* <AccountCircleIcon /> */}
-            <p>Profile</p>
-          </MenuItem>
+          {user ? (
+            <MenuItem onClick={handleClose} component={Link} to="/profile">
+              {/* <AccountCircleIcon /> */}
+              <p>Profile</p>
+            </MenuItem>
+          ) : null}
           <MenuItem onClick={handleClose} component={Link} to="/help">
             {/* <HelpIcon /> */}
             <p>Help</p>

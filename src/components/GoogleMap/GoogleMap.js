@@ -17,6 +17,7 @@ export class MapContainer extends Component {
     return (
       <div className="googleMap__mapContainer">
         <Map
+          // resetBoundsOnResize={true}
           google={this.props.google}
           zoom={14}
           style={mapStyles}
